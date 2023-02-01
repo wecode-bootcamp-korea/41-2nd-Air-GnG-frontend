@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "title": "승기’s 럭셔리 하우스",
+    "description": "물 맑고 ,공기 좋은 청수리 마을 돌기와집 독채펜션 고요에서 누구의 간섭도 받지도 않고 넓은 잔디마당에서 아무 생각없이 힐링하러 오세요~~ 바베큐장에서 바베큐도 하시고 불멍하면서 반짝반짝 별도 보실수있어요 프라이빗하게 즐길수 있는 제주도 독채펜션 고요입니다.",
+    "maximum_people": 8,
+    "bedroom_count": 4,
+    "bed_count": 3,
+    "bathroom_count": 6,
+    "price": "29300.00",
+    "address": "한림",
+    "latitude": "33.51990360",
+    "longitude": "126.95422020",
+    "host_name": "승케이",
+    "host_image": "seung.png",
+    "host_content": "승기의 방임",
+    "book_date": [
+      { "check_in_date": "2022-02-02", "check_out_date": "2022-02-04" }
+    ],
+    "room_image": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-45317245/original/f4f35dba-8564-4e10-8436-f06a90034ba6.jpeg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-45317245/original/ed10e067-bf3d-4c16-ab44-34635d3f5413.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-45317245/original/eee90fba-9247-4620-9b0e-ee6318775fdd.jpeg?im_w=720",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-45317245/original/edf30387-d520-40f4-8c36-82bc63a26cc8.jpeg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-45317245/original/d741add5-cc3f-44e7-ae49-c3b8b0866fd9.jpeg?im_w=1200"
+    ]
+  }
+]
