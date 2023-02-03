@@ -1,34 +1,58 @@
-[
-  {
-    "product_image": [
-      {
-        "image_url1": "https://source.unsplash.com/random"
-      },
-      {
-        "image_url2": "https://source.unsplash.com/random"
-      },
-      {
-        "image_url3": "https://source.unsplash.com/random"
-      },
-      {
-        "image_url4": "https://source.unsplash.com/random"
-      }
-    ]
-  },
-  {
-    "product_image": [
-      {
-        "image_url1": "https://source.unsplash.com/random"
-      },
-      {
-        "image_url2": "https://source.unsplash.com/random"
-      },
-      {
-        "image_url3": "https://source.unsplash.com/random"
-      },
-      {
-        "image_url4": "https://source.unsplash.com/random"
-      }
-    ]
-  }
-]
+// [
+//   {
+//     "guest_id": "1",
+//     "room_id": "1",
+//     "guest_number": "2",
+//     "total_price": "30000.00",
+//     "check_in_date": "2022-10-10T15:00:00.000Z",
+//     "check_out_date": "2022-10-15T15:00:00.000Z",
+//     "room_images": [
+//       "https://images.unsplash.com/photo-1538168407380-1d74b45cf8ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fCVFQyVBNyU5MXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+//       "https://source.unsplash.com/random",
+//       "https://source.unsplash.com/random",
+//       "https://source.unsplash.com/random"
+//     ]
+//   },
+//   {
+//     "guest_id": "2",
+//     "room_id": "2",
+//     "guest_number": "3",
+//     "total_price": "50000.00",
+//     "check_in_date": "2022-10-20T15:00:00.000Z",
+//     "check_out_date": "2022-10-30T15:00:00.000Z",
+//     "room_images": [
+//       "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8JUVDJUE3JTkxfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+//       "https://source.unsplash.com/random",
+//       "https://source.unsplash.com/random",
+//       "https://source.unsplash.com/random"
+//     ]
+//   },
+//   {
+//     "guest_id": "1",
+//     "room_id": "1",
+//     "guest_number": "2",
+//     "total_price": "30000.00",
+//     "check_in_date": "2022-10-10T15:00:00.000Z",
+//     "check_out_date": "2022-10-15T15:00:00.000Z",
+//     "room_images": [
+//       "https://images.unsplash.com/photo-1584752242818-b4bd7fb3fe10?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODR8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+//       "https://source.unsplash.com/random",
+//       "https://source.unsplash.com/random",
+//       "https://source.unsplash.com/random"
+//     ]
+//   },
+//   {
+//     "guest_id": "2",
+//     "room_id": "2",
+//     "guest_number": "3",
+//     "total_price": "50000.00",
+//     "check_in_date": "2022-10-20T15:00:00.000Z",
+//     "check_out_date": "2022-10-30T15:00:00.000Z",
+//     "room_images": [
+//       "https://images.unsplash.com/photo-1434082033009-b81d41d32e1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTl8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+//       "https://source.unsplash.com/random",
+//       "https://source.unsplash.com/random",
+//       "https://source.unsplash.com/random"
+//     ]
+//   }
+// ]
