@@ -10,7 +10,14 @@ export default function BookingBox({ item }) {
   const [dates, setDates] = useState([]);
   const navigate = useNavigate();
   const clicked = () => {
-    navigate('/booking', { state: { value: sendingDate } });
+    navigate('/booking', {
+      state: {
+        date: sendingDate,
+        title: arr.title,
+        img: arr.room_image,
+        contents: arr.discription,
+      },
+    });
   };
   const arr = item[0];
   const period = NewDates => {

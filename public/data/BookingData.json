@@ -1,0 +1,31 @@
+1[
+  {
+    "id": 1,
+    "title": "제주도",
+    "description": "한적한 시골",
+    "maximum_people": "10",
+    "bedroom_count": "2",
+    "bed_count": "2",
+    "bathroom_count": "2",
+    "price": "10000",
+    "address": "제주도 애월읍",
+    "latitude": "23123123",
+    "longitude": "123123123",
+    "host_name": "승기",
+    "host_image": "www.asdjwdasdkdcds.sdjj",
+    "product_image": [
+      {
+        "image_url": "이미지1"
+      },
+      {
+        "image_url": "이미지2"
+      },
+      {
+        "image_url": "이미지3"
+      },
+      {
+        "image_url": "이미지4"
+      }
+    ]
+  }
+]
