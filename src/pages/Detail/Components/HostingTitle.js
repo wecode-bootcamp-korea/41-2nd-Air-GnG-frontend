@@ -7,7 +7,7 @@ import Datepicker from './Datepicker';
 import Facilities from './Facilities';
 
 export default function HostingTitle({ items }) {
-  const { name, title, limit, bed, url1, detail } = items;
+  //const { name, title, limit, bed, url1, detail } = items;
   const arr = items[0];
   return (
     <TotalDiv>
@@ -139,6 +139,7 @@ const BorderBotDiv = styled.div`
   margin: auto;
   padding: 48px 0;
   border-bottom: 1px solid #dddddd;
+  line-height: 1.5;
 `;
 
 const AircoverContent = styled.div`

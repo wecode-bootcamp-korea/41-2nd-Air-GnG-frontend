@@ -83,4 +83,9 @@ const LongBorderBotDiv = styled.div`
   margin: auto;
   padding: 48px 0;
   border-top: 1px solid #dddddd;
+  p {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 600;
+  }
 `;
