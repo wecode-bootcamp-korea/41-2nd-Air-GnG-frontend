@@ -1,24 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import styled from 'styled-components';
 export default function PersonBtn({ item, count, addNum, value, isMax }) {
   const [number, setNumber] = useState(0);
-  console.log('value', value);
+  const [changeColor, setChangeColor] = useState(1);
+  console.log(isMax);
   const PlusCount = e => {
     if (isMax > value[0].maximum_people) return;
     if (isMax < value[0].maximum_people) {
       setNumber(number + 1);
       addNum(item.name, number + 1);
     }
-    if (isMax) return;
+    if (value[0].maximum_people === isMax) {
+      setChangeColor(0.1);
+    }
   };
   const MiusCount = e => {
     if (count > 0) {
       setNumber(number - 1);
+
       addNum(item.name, number - 1);
     }
   };
-  const arr = item[0];
+
   return (
     <DIV>
       <FlexDiv>
@@ -31,11 +35,19 @@ export default function PersonBtn({ item, count, addNum, value, isMax }) {
       </FlexDiv>
       <CenterDiv>
         <IconDiv>
-          <AiOutlineMinusCircle name={item.name} onClick={MiusCount} />
+          <AiOutlineMinusCircle
+            name={item.name}
+            onClick={MiusCount}
+            primary={changeColor}
+          />
         </IconDiv>
         <span>{count}</span>
         <IconDiv>
-          <AiOutlinePlusCircle name={item.name} onClick={PlusCount} />
+          <AiOutlinePlusCircle
+            primary={changeColor}
+            name={item.name}
+            onClick={PlusCount}
+          />
         </IconDiv>
       </CenterDiv>
     </DIV>
@@ -45,7 +57,6 @@ export default function PersonBtn({ item, count, addNum, value, isMax }) {
 const DIV = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
   font-weight: 600;
 `;
 
@@ -74,5 +85,7 @@ const NumDiv = styled.div`
 `;
 
 const IconDiv = styled.div`
-  opacity: 0.1;
+  &:hover {
+    cursor: pointer;
+  }
 `;

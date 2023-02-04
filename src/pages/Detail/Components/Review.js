@@ -9,7 +9,7 @@ export default function Review() {
       .then(result => result.json())
       .then(data => setComnet(data));
   }, []);
-  console.log('ds', coment);
+
   return (
     <CommentContainer>
       {coment.map(item => {
@@ -35,10 +35,19 @@ const CommentContainer = styled.div`
   align-items: center;
   flex-flow: row wrap;
   justify-content: space-between;
+  font-size: large;
 `;
 
 const FlexDiv = styled.div`
   display: flex;
+  gap: 10px;
+  div {
+    font-size: 24px;
+  }
+  span {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const CommentDiv = styled.div`

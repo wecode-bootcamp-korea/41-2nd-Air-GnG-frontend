@@ -7,9 +7,9 @@ import Title from './Components/Title';
 
 export default function Detail() {
   const [item, setItem] = useState([]);
-
+  //10.58.52.225:3000/room/61
   useEffect(() => {
-    fetch('http://10.58.52.225:3000/room/61')
+    fetch('data/room.json')
       .then(result => result.json())
       .then(data => setItem(data));
   }, []);
