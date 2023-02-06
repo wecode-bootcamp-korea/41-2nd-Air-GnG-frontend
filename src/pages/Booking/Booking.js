@@ -17,11 +17,13 @@ import { BiBookmarks } from 'react-icons/bi';
 
 export default function Booking() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { date, title, img, contents, guest, roomId } = location.state;
   const dayperfee = 1000;
   const cleanpay = 30000;
   const [modal, setModal] = useState(false);
   const [modalDate, setModalDate] = useState(false);
-  const [adults, setAdults] = useState(0);
+  const [adults, setAdults] = useState(location.state.guest);
   const [childs, setChilds] = useState(0);
   const [kinders, setKinders] = useState(0);
   const [pets, setPets] = useState(0);
@@ -62,9 +64,6 @@ export default function Booking() {
     e.preventDefault();
     setPets(pets + 1);
   };
-  const location = useLocation();
-  const { date, title, img, contents } = location.state;
-  console.log(location.state.date);
 
   const checkIn = location.state.date[0];
   const checkOut = location.state.date[1];
@@ -108,7 +107,6 @@ export default function Booking() {
   const servicefee = nightspay * 0.1;
   const totalprice = nightspay + cleanpay + servicefee;
 
-  //window.localStorage.setItem('token', '');
   const goBookingResult = () => {
     fetch('http://10.58.52.225:3000/booking', {
       method: 'POST',
@@ -118,7 +116,7 @@ export default function Booking() {
       },
       body: JSON.stringify({
         guestId: 1,
-        roomId: 1,
+        roomId: location.state.roomId,
         checkIn: formatDate[0],
         checkOut: formatDate[1],
         guestNumber: adults,
@@ -126,10 +124,9 @@ export default function Booking() {
       }),
     })
       .then(response => response.json())
-      .then(data => {});
-
-    //if (data.message === 'PASSWORD_DOES_NOT_MATCH') {
-    //navigate('/bookingComplete')}
+      .then(data => {
+        navigate('/bookingComplete');
+      });
   };
 
   const [inputValues, setInputValues] = useState({});
