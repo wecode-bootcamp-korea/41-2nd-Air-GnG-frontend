@@ -99,6 +99,8 @@ const FooterTop = styled.div`
 `;
 
 const FooterDiv = styled.div`
+  position: absolute;
+  bottom: 0;
   padding: 10px;
   background-color: tomato;
 `;

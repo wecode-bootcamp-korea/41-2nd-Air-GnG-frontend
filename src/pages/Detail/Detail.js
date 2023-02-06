@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import BookingBox from './Components/BookingBox';
 import DetailBot from './Components/DetailBot';
@@ -7,7 +8,9 @@ import Title from './Components/Title';
 
 export default function Detail() {
   const [item, setItem] = useState([]);
-  //10.58.52.225:3000/room/61
+  // const HostIdParams = useParams();
+
+  //`10.58.52.225:3000/room/${HostIdParams}`
   useEffect(() => {
     fetch('http://10.58.52.82:3000/room/61')
       .then(result => result.json())

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Datepicker from './Datepicker';
@@ -8,8 +8,22 @@ import dayjs from 'dayjs';
 export default function BookingBox({ item }) {
   const [isTrue, setIsTrue] = useState(false);
   const [dates, setDates] = useState([]);
+  const [guest, setGuest] = useState();
   const navigate = useNavigate();
   const clicked = () => {
+    navigate('/booking', {
+      state: {
+        date: sendingDate,
+        guest: guest,
+        title: arr.title,
+        img: arr.room_image,
+        contents: arr.description,
+      },
+    });
+  };
+  //게스트세기
+  const countGuest = num => {
+    setGuest(num + 1);
     navigate('/booking', {
       state: {
         date: sendingDate,
@@ -19,6 +33,7 @@ export default function BookingBox({ item }) {
       },
     });
   };
+
   const arr = item[0];
   const period = NewDates => {
     setDates(NewDates);
@@ -48,10 +63,10 @@ export default function BookingBox({ item }) {
         </FlexDiv>
         <Gap>
           <Datepicker change={onChange} period={period} item={item} />
-          <SelectPeople item={item} />
+          <SelectPeople countGuest={countGuest} item={item} />
         </Gap>
 
-        <Button onClick={clicked}>예약하기</Button>
+        <Button Click={clicked}>예약하기</Button>
         {isTrue ? (
           <PriceDiv>
             <Center>

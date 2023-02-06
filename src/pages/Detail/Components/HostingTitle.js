@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { RiMedalFill } from 'react-icons/ri';
 import { SlLocationPin } from 'react-icons/sl';
 import { BiBed } from 'react-icons/bi';
-import Datepicker from './Datepicker';
 import Facilities from './Facilities';
 
 export default function HostingTitle({ items }) {
@@ -18,7 +17,7 @@ export default function HostingTitle({ items }) {
           </span>
           <Condition>
             <p>
-              최대{arr.maximom_people}명 • 침대{arr.bed_count}개 • 침실
+              최대{arr.maximum_people}명 • 침대{arr.bed_count}개 • 침실
               {arr.bedroom_count}개 • 화장실 {arr.bathroom_count}개
             </p>
           </Condition>
@@ -31,7 +30,7 @@ export default function HostingTitle({ items }) {
       <HostInfoDiv>
         <InfoWarpper>
           <BigIcon>
-            <RiMedalFill />
+            <RiMedalFill style={{ color: 'tomato' }} />
           </BigIcon>
           <HotelInfo>
             <span>{arr.host_name}님은 슈퍼호스트입니다.</span>
@@ -44,7 +43,7 @@ export default function HostingTitle({ items }) {
         </InfoWarpper>
         <InfoWarpper>
           <BigIcon>
-            <SlLocationPin />
+            <SlLocationPin style={{ color: 'tomato' }} />
           </BigIcon>
           <HotelInfo>
             <span>훌륭한 숙소 위치</span>
@@ -122,8 +121,13 @@ const HotelInfo = styled.div``;
 const InfoWarpper = styled.div`
   display: flex;
   padding: 12px;
+  line-height: 1.2;
+  span {
+    font-size: 18px;
+    font-weight: 600;
+  }
   p {
-    font-size: 8px;
+    font-size: 14px;
   }
 `;
 const HostInfoDiv = styled.div`
