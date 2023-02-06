@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import Dropdown from './Dropdown';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import PersonBtn from './PersonBtn';
 import styled from 'styled-components';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
-const SelectPeople = ({ item }) => {
+const SelectPeople = ({ countGuest, item }) => {
   const [count, setCount] = useState({
     adult: 0,
     kid: 0,
@@ -12,41 +11,65 @@ const SelectPeople = ({ item }) => {
     pet: 0,
   });
   const [dropdownVisibility, setDropdownVisibility] = useState(false);
+  const guest = () => {
+    countGuest(total);
+  };
   const onClick = e => {
     setDropdownVisibility(!dropdownVisibility);
+    console.log(dropdownVisibility);
+    // setDropdownVisibility(prev => !prev);
   };
   const addNum = (key, value) => {
-    return setCount({ ...count, [key]: value });
+    setCount({ ...count, [key]: value });
+    countGuest(count.adult);
   };
   const { adult, kid, baby, pet } = count;
   const total = adult + kid + baby;
 
+  const el = useRef();
+
+  useEffect(() => {
+    const clickOutside = e => {
+      if (dropdownVisibility && el.current && !el.current.contains(e.target)) {
+        setDropdownVisibility(false);
+      }
+    };
+
+    document.addEventListener('mousedown', clickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', clickOutside);
+    };
+  }, [dropdownVisibility]);
   return (
     <Div>
-      <BookingDiv onClick={onClick}>
-        <span>게스트 {count.adult}명</span>
+      <BookingDiv onClick={onClick} ref={el}>
+        <input
+          disabled
+          onChange={guest}
+          placeholder={`게스트 ${count.adult}명`}
+        />
         {dropdownVisibility ? <IoIosArrowUp /> : <IoIosArrowDown />}
       </BookingDiv>
-      <Dropdown visibility={dropdownVisibility}>
-        <ul>
-          <li>
-            <ZDiv>
-              {personSort.map(person => {
-                return (
-                  <PersonBtn
-                    key={person.id}
-                    item={person}
-                    value={item}
-                    addNum={addNum}
-                    count={count[person.name]}
-                    isMax={total}
-                  />
-                );
-              })}
-            </ZDiv>
-          </li>
-        </ul>
-      </Dropdown>
+      {dropdownVisibility && (
+        <div>
+          <ZDiv>
+            {personSort.map(person => {
+              return (
+                <PersonBtn
+                  onClick={guest}
+                  key={person.id}
+                  item={person}
+                  value={item}
+                  addNum={addNum}
+                  count={count[person.name]}
+                  isMax={total}
+                />
+              );
+            })}
+          </ZDiv>
+        </div>
+      )}
     </Div>
   );
 };
@@ -62,6 +85,14 @@ const BookingDiv = styled.div`
   border: 1px solid #dddd;
   border-radius: 12px;
   font-weight: 100;
+  input {
+    border-style: none;
+    background-color: white;
+    text-align: center;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 const Div = styled.div``;
 const ZDiv = styled.div`

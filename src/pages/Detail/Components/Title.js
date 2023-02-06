@@ -37,19 +37,29 @@ export default function Title({ item }) {
         }).then(response => response.json());
   };
 
-  console.log(arr.id);
+  const saveHandler = () => {
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        title: 'update title',
+      }),
+    }).then(response => console.log(response));
+  };
   return (
     <Warpper>
       <TopTitle>
         <h1>{arr.title}</h1>
         <div>
-          <div>
-            <BsStarFill />
+          <ICON>
+            <BsStarFill style={{ color: 'tomato' }} />
             <span>후기 300개</span>
-            <RiMedalLine />
+            <RiMedalLine style={{ color: 'tomato' }} />
             <span>후기 300개</span>
             <span>{arr.address}</span>
-          </div>
+          </ICON>
           <div>
             <div>
               <RiShareBoxLine />
@@ -89,6 +99,12 @@ const Warpper = styled.div`
   width: 1120px;
 `;
 
+const ICON = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const TopTitle = styled.div`
   font-size: 24px;
   font-weight: 600;
@@ -110,6 +126,8 @@ const TopTitle = styled.div`
 
 const ImgWarpper = styled.div`
   object-fit: cover;
+  overflow: hidden;
+  border-radius: 12px;
   margin-top: 20px;
   display: flex;
   width: 1120px;

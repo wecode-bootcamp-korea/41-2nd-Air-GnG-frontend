@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function PersonBtn({ item, count, addNum, value, isMax }) {
   const [number, setNumber] = useState(0);
   const [changeColor, setChangeColor] = useState(1);
-  console.log(isMax);
+
   const PlusCount = e => {
     if (isMax > value[0].maximum_people) return;
     if (isMax < value[0].maximum_people) {

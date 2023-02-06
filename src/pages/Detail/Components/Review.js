@@ -17,7 +17,7 @@ export default function Review() {
           <CommentDiv key={item.id}>
             <FlexDiv>
               <div>
-                <BsPersonCircle />
+                <BsPersonCircle style={{ color: 'tomato' }} />
               </div>
               <span>{item.name}</span>
             </FlexDiv>
@@ -41,6 +41,7 @@ const CommentContainer = styled.div`
 const FlexDiv = styled.div`
   display: flex;
   gap: 10px;
+  margin-bottom: 10px;
   div {
     font-size: 24px;
   }
@@ -53,4 +54,8 @@ const FlexDiv = styled.div`
 const CommentDiv = styled.div`
   height: 100px;
   width: 45%;
+  font-size: 16px;
+  span {
+    line-height: 1.2;
+  }
 `;
