@@ -27,12 +27,15 @@ export default function BookingBox({ item }) {
   const onChange = boolean => {
     setIsTrue(boolean);
   };
+
   const formatDate = date => dayjs(date).format('YYYY-MM-DD');
   const sendingDate = dates.map(formatDate);
 
-  const nights =
+  const nights = parseInt(
     (new Date(dates[1]).getTime() - new Date(dates[0]).getTime()) /
-    (24 * 60 * 60 * 1000);
+      (24 * 60 * 60 * 1000)
+  );
+  console.log(dates);
   return (
     <BookinDiv>
       <BookingContainer>
