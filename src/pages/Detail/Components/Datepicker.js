@@ -10,9 +10,10 @@ const Datepicker = ({ period, change, item }) => {
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);
   const [startDate, endDate] = dateRange;
 
-  console.log(dateRange);
   const checkIn = item[0].book_date[0].check_in_date;
   const checkOut = item[0].book_date[0].check_out_date;
+
+  console.log(dateRange);
 
   const onChange = dates => {
     const disabledStart = new Date(checkIn);
@@ -21,10 +22,13 @@ const Datepicker = ({ period, change, item }) => {
       disabledStart.getTime() > dates[0].getTime() &&
       disabledEnd.getTime() < dates[1]?.getTime()
     ) {
-      setDateRange([
+      const changed = [
         dates[0],
-        new Date().setDate(new Date(checkIn).getDate() - 1),
-      ]);
+        new Date(new Date(disabledStart.setDate(disabledStart.getDate() - 1))),
+      ];
+      setDateRange(changed);
+      period(changed);
+      change(changed);
       return;
     }
     period(dates);
