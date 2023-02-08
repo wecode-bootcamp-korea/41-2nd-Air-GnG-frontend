@@ -24,14 +24,6 @@ export default function BookingBox({ item }) {
   //게스트세기
   const countGuest = num => {
     setGuest(num + 1);
-    navigate('/booking', {
-      state: {
-        date: sendingDate,
-        title: arr.title,
-        img: arr.room_image,
-        contents: arr.discription,
-      },
-    });
   };
 
   const arr = item[0];
@@ -66,7 +58,7 @@ export default function BookingBox({ item }) {
           <SelectPeople countGuest={countGuest} item={item} />
         </Gap>
 
-        <Button Click={clicked}>예약하기</Button>
+        <Button onClick={clicked}>예약하기</Button>
         {isTrue ? (
           <PriceDiv>
             <Center>

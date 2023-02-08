@@ -41,9 +41,12 @@ const SelectPeople = ({ countGuest, item }) => {
       document.removeEventListener('mousedown', clickOutside);
     };
   }, [dropdownVisibility]);
+
+  console.log(dropdownVisibility);
+
   return (
-    <Div>
-      <BookingDiv onClick={onClick} ref={el}>
+    <Div ref={el}>
+      <BookingDiv onClick={onClick}>
         <input
           disabled
           onChange={guest}
@@ -89,9 +92,6 @@ const BookingDiv = styled.div`
     border-style: none;
     background-color: white;
     text-align: center;
-    &:hover {
-      cursor: pointer;
-    }
   }
 `;
 const Div = styled.div``;
