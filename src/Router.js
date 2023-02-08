@@ -6,6 +6,7 @@ import Booking from './pages/Booking/Booking';
 import BookingComplete from './pages/BookingComplete';
 import Detail from './pages/Detail/Detail';
 import Hosting from './pages/Hosting';
+import HostingComplete from './pages/HostingComplete';
 import Payment from './pages/Payment';
 import Wishlist from './pages/Wishlist';
 import Nav from './components/Nav/Nav';
@@ -21,6 +22,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/bookingcomplete" element={<BookingComplete />} />
+        <Route path="/hostingcomplete" element={<HostingComplete />} />
         <Route path="/Detail" element={<Detail />} />
         <Route path="/hosting" element={<Hosting />} />
         <Route path="/payment" element={<Payment />} />
