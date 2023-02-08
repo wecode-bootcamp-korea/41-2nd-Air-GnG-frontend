@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import BookingBox from './Components/BookingBox';
 import DetailBot from './Components/DetailBot';
@@ -8,11 +8,11 @@ import Title from './Components/Title';
 
 export default function Detail() {
   const [item, setItem] = useState([]);
-  const HostIdParams = useParams();
+  const { id } = useParams();
 
   //`10.58.52.225:3000/room/${HostIdParams}`
   useEffect(() => {
-    fetch(`http://10.58.52.225:3000/room/${HostIdParams}`)
+    fetch(`http://10.58.52.82:3000/rooms/${id}`)
       .then(result => result.json())
       .then(data => setItem(data));
   }, []);

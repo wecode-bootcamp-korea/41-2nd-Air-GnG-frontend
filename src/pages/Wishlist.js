@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import MapModal from './Wishlist/WishMap';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { FiShare } from 'react-icons/fi';
