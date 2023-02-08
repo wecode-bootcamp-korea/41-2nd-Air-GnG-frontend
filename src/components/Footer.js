@@ -102,6 +102,7 @@ const FooterDiv = styled.div`
   position: absolute;
   bottom: 0;
   padding: 10px;
+  width: 100%;
   background-color: tomato;
 `;
 
