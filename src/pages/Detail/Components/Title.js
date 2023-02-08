@@ -9,10 +9,35 @@ import {
 import { BsStarFill } from 'react-icons/bs';
 export default function Title({ item }) {
   const [isTrue, setIsTrue] = useState(false);
+  const arr = item[0];
   const handleClick = () => {
     setIsTrue(!isTrue);
+    isTrue === false
+      ? fetch('http://10.58.52.82:3000/room/wishList', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+            Authorization:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY3NTY1ODU3OX0.Bwyxsxxs64MZv5juV5gq1qIfy0T9OWV_DNsgQad9Srw',
+          },
+          body: JSON.stringify({
+            roomId: arr.id,
+          }),
+        }).then(response => response.json())
+      : fetch(`http://10.58.52.82:3000/room/wishList`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+            Authorization:
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY3NTY1ODU3OX0.Bwyxsxxs64MZv5juV5gq1qIfy0T9OWV_DNsgQad9Srw',
+          },
+          body: JSON.stringify({
+            roomId: arr.id,
+          }),
+        }).then(response => response.json());
   };
-  const arr = item[0];
+
+  console.log(arr.id);
   return (
     <Warpper>
       <TopTitle>
