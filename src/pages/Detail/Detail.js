@@ -9,7 +9,7 @@ export default function Detail() {
   const [item, setItem] = useState([]);
   //10.58.52.225:3000/room/61
   useEffect(() => {
-    fetch('data/room.json')
+    fetch('http://10.58.52.82:3000/room/61')
       .then(result => result.json())
       .then(data => setItem(data));
   }, []);
