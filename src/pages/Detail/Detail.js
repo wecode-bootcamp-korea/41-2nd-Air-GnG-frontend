@@ -8,11 +8,11 @@ import Title from './Components/Title';
 
 export default function Detail() {
   const [item, setItem] = useState([]);
-  const HostIdParams = useParams();
+  const { id } = useParams();
 
   //`10.58.52.225:3000/room/${HostIdParams}`
   useEffect(() => {
-    fetch(`http://10.58.52.225:3000/room/${HostIdParams}`)
+    fetch(`http://10.58.52.82:3000/room/${id}`)
       .then(result => result.json())
       .then(data => setItem(data));
   }, []);
