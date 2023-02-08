@@ -13,6 +13,7 @@ export default function BookingBox({ item }) {
   const clicked = () => {
     navigate('/booking', {
       state: {
+        roomId: arr.id,
         date: sendingDate,
         guest: guest,
         title: arr.title,

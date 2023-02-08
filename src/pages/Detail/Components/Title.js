@@ -13,23 +13,21 @@ export default function Title({ item }) {
   const handleClick = () => {
     setIsTrue(!isTrue);
     isTrue === false
-      ? fetch('http://10.58.52.82:3000/room/wishList', {
+      ? fetch('http://10.58.52.82:3000/rooms/wishList', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY3NTY1ODU3OX0.Bwyxsxxs64MZv5juV5gq1qIfy0T9OWV_DNsgQad9Srw',
+            Authorization: localStorage.getItem('token'),
           },
           body: JSON.stringify({
             roomId: arr.id,
           }),
         }).then(response => response.json())
-      : fetch(`http://10.58.52.82:3000/room/wishList`, {
+      : fetch(`http://10.58.52.82:3000/rooms/wishList`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY3NTY1ODU3OX0.Bwyxsxxs64MZv5juV5gq1qIfy0T9OWV_DNsgQad9Srw',
+            Authorization: localStorage.getItem('token'),
           },
           body: JSON.stringify({
             roomId: arr.id,
