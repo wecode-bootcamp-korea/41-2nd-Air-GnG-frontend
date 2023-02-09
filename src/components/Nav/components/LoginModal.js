@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Form, Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -12,8 +12,10 @@ export default function LoginModal(setLoginModalIsOpen) {
   const REDIRECT_URI = 'http://localhost:3000/kakaoLogin';
   const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
+  const el = useRef();
+
   return (
-    <LoginModalContainer onClick={e => e.stopPropagation()}>
+    <LoginModalContainer ref={el} onClick={e => e.stopPropagation()}>
       <LoginModalTop>
         <Title>로그인 또는 회원가입</Title>
       </LoginModalTop>
@@ -43,6 +45,7 @@ export default function LoginModal(setLoginModalIsOpen) {
 }
 
 const LoginModalContainer = styled.div`
+  background-color: white;
   position: absolute;
   border: 1px solid #ebebeb;
   box-shadow: 0px 1px 0px #fafafa;

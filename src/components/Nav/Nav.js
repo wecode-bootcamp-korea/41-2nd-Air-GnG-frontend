@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import UserModal from './components/UserModal';
@@ -19,12 +19,32 @@ export default function Nav() {
   const [searchWhereModal, setSearchWhereModal] = useState(false);
   const [searchWhenModal, setSearchWhenModal] = useState(false);
   const [searchGuestModal, setSearchGuestModal] = useState(false);
-  const [regionData, setRegionData] = useState();
+  const [regionData, setRegionData] = useState([]);
   const [region, setRegion] = useState(0);
+  const [direction, setDirection] = useState();
   const [dataForm, setDataForm] = useState({
     checkIn: new Date(),
     checkOut: new Date(),
   });
+  const [dropdownVisibility, setDropdownVisibility] = useState(false);
+  const aa = useRef();
+  useEffect(() => {
+    const outClick = e => {
+      if (searchWhenModal && aa.current && !aa.current.contains(e.target)) {
+        setSearchWhereModal(false);
+        console.log('out');
+      }
+    };
+    document.addEventListener('mousedown', outClick);
+
+    return () => {
+      document.removeEventListener('mousedown', outClick);
+    };
+  }, [searchWhenModal]);
+  console.log(dropdownVisibility);
+  const Click = () => {
+    setDropdownVisibility(!dropdownVisibility);
+  };
 
   const caldate = newdate => {
     const arr = newdate.map(date => dayjs(date).format('YYYY-MM-DD'));
@@ -55,8 +75,9 @@ export default function Nav() {
     return result;
   };
 
-  const handleArea = city => {
+  const handleArea = (city, where) => {
     setRegion(city);
+    setDirection(where);
   };
 
   useEffect(() => {
@@ -77,24 +98,25 @@ export default function Nav() {
             <Logo src="../../../images/nav/logo.png" />
           </Link>
           <NavSearchBox>
-            <SearchWhere onClick={() => {}}>
-              <BoxWhere
-                onClick={() => {
-                  setSearchWhereModal(!searchWhereModal);
-                }}
-              >
-                여행지
+            <SearchWhere
+              onClick={() => {
+                setSearchWhereModal(!searchWhereModal);
+              }}
+            >
+              <BoxWhere>
+                <p>여행지</p>
+                <p>{direction}</p>
               </BoxWhere>
               {searchWhereModal && (
                 <WhereModal>
                   {regionData.map(info => {
-                    const { region } = info;
+                    const { region, direction } = info;
                     return (
                       <WhereBox key={region}>
                         <WhereImg
                           src={info.url}
                           onClick={() => {
-                            handleArea(region);
+                            handleArea(region, direction);
                           }}
                         />
                         <WhereTitle>{info.direction}</WhereTitle>
@@ -172,7 +194,12 @@ export default function Nav() {
 }
 
 const NavBox = styled.div`
-  height: 100%;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  z-index: 99999;
+  top: 0;
+  background-color: white;
   border: 1px solid #ebebeb;
   box-shadow: 0px 1px 0px #fafafa;
   div {
@@ -183,17 +210,19 @@ const NavBox = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 150px;
-  height: 80px;
+  max-width: 100%;
+  height: 60px;
+  margin-top: 5px;
 `;
 
 const NavSearchBox = styled.div`
   width: 600px;
   height: 60px;
-  margin-left: 140px;
+  margin-left: 135px;
   border: 1px solid #ebebeb;
   box-shadow: 0px 1px 0px #fafafa;
   border-radius: 30px;
+
   cursor: pointer;
   &:hover {
     box-shadow: 0px 2px 1.5px grey;
@@ -202,10 +231,13 @@ const NavSearchBox = styled.div`
 const SearchWhere = styled.div`
   margin-left: 20px;
   padding-right: 30px;
+  margin-top: -10px;
 `;
 const SearchWhen = styled.div`
   border-right: 1px solid #cccccc;
   padding-right: 30px;
+  z-index: 999;
+  margin-top: -10px;
 `;
 const SearchWho = styled.div`
   margin-right: 20px;
@@ -253,10 +285,16 @@ const Manicon = styled.img`
 `;
 const DateModal = styled.div`
   position: absolute;
-  top: 75px;
-  left: 830px;
+  top: 19px;
+  left: 850px;
   display: flex;
   justify-content: center;
+  z-index: 99999;
+  .react-datepicker {
+    width: 483px;
+    height: 250px;
+    display: flex;
+  }
 `;
 const SearchModalWrap = styled.div`
   height: 60px;
@@ -271,12 +309,17 @@ const SearchModalWrap = styled.div`
   border-radius: 50px;
 `;
 const BoxWhere = styled.div`
+  display: flex;
   flex-direction: column;
   line-height: 20px;
   border-right: 1px solid #cccccc;
   cursor: pointer;
   padding-right: 40px;
   margin-left: 20px;
+
+  p {
+    margin-top: 10px;
+  }
 `;
 const InputWhere = styled.input`
   border: none;
@@ -297,25 +340,32 @@ const BoxGuest = styled.div`
 const WhereModal = styled.div`
   background-color: white;
   width: 400px;
-  height: 300px;
+  height: 400px;
   border: 1px solid #ebebeb;
   position: absolute;
-  margin-top: 370px;
-  margin-left: -200px;
+  margin-top: 480px;
+  margin-left: 238px;
   border-radius: 15px;
   flex-wrap: wrap;
+  z-index: 999;
 `;
 
 const WhereBox = styled.div`
-  width: 35%;
-  height: 120px;
+  height: 170px;
   display: flex;
   flex-direction: column;
   margin-right: 10px;
   margin-left: 12px;
 `;
 const WhereImg = styled.img`
-  width: 90px;
-  height: 100px;
+  border-radius: 12px;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ebebeb;
+  &:hover {
+    border: 1px solid black;
+  }
 `;
-const WhereTitle = styled.p``;
+const WhereTitle = styled.p`
+  margin-top: 10px;
+`;

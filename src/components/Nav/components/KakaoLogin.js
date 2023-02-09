@@ -17,7 +17,7 @@ const KakaoLogin = () => {
       .then(res => res.json())
       .then(data => {
         if (data.access_token) {
-          fetch('http://10.58.52.82:3001/auth/login', {
+          fetch('http://10.58.52.225:3001/auth/login', {
             method: 'POST',
             headers: {
               Authorization: data.access_token,

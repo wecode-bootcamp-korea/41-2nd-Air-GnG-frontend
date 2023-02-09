@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { addDays } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -8,8 +8,27 @@ const { RangePicker } = DatePicker;
 
 const NavDatePicker = ({ period, change, item, caldate }) => {
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);
-
+  const [dropdownVisibility, setDropdownVisibility] = useState(false);
   const [startDate, endDate] = dateRange;
+
+  const el = useRef();
+  useEffect(() => {
+    const outClick = e => {
+      if (dropdownVisibility && el.current && !el.current.contains(e.target)) {
+        setDropdownVisibility(false);
+        console.log('외부');
+      }
+    };
+    document.addEventListener('mousedown', outClick);
+
+    return () => {
+      document.removeEventListener('mousedown', outClick);
+    };
+  }, [dropdownVisibility]);
+  console.log(dropdownVisibility);
+  const Click = () => {
+    setDropdownVisibility(!dropdownVisibility);
+  };
 
   const caldates = update => {
     setDateRange(update);
@@ -18,36 +37,7 @@ const NavDatePicker = ({ period, change, item, caldate }) => {
   const formatDate = date => dayjs(date).format('YYYY-MM-DD');
   const arr = dateRange.map(formatDate);
 
-  // const checkIn = item[0].book_date[0].check_in_date;
-  // const checkOut = item[0].book_date[0].check_out_date;
-
-  // const onChange = dates => {
-  //   const disabledStart = new Date(checkIn);
-  //   const disabledEnd = new Date(checkOut);
-  //   if (
-  //     disabledStart.getTime() > dates[0].getTime() &&
-  //     disabledEnd.getTime() < dates[1]?.getTime()
-  //   ) {
-  //     const test = new Date().setDate(new Date(checkIn).getDate() - 1);
-  //     console.log(new Date(test));
-
-  //     setDateRange([
-  //       dates[0],
-  //       new Date().setDate(new Date(checkIn).getDate() - 1),
-  //     ]);
-  //     return;
-  //   }
-  //   period(dates);
-  //   change(dates);
-  //   setDateRange(dates);
-  // };
-
   const result = []; // disabled Dates
-  // const curDate = new Date(checkIn);
-  // while (curDate <= new Date(checkOut)) {
-  //   result.push(curDate.toISOString().split('T')[0]);
-  //   curDate.setDate(curDate.getDate() + 1);
-  // }
 
   const selectsDayResult = [];
   const selectsDay = new Date(arr[0]);
@@ -58,7 +48,7 @@ const NavDatePicker = ({ period, change, item, caldate }) => {
   const formatResult = arr.map(date => new Date(date));
 
   return (
-    <Div>
+    <Div ref={el}>
       <DatePicker
         renderCustomHeader={({
           monthDate,
@@ -126,10 +116,10 @@ const Div = styled.div`
     width: 100%;
     height: 56px;
     border-style: none;
-    border: 1px solid #dddd;
-    border-radius: 12px;
+    background-color: transparent;
     font-size: 14px;
     font-weight: 500;
+
     &:hover {
       cursor: pointer;
     }

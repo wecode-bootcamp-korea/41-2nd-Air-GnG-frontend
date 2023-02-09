@@ -1,26 +1,26 @@
 [
   {
     "id": 1,
-    "region": 1,
-    "direction": "동부",
-    "url": "../../../images/nav/google.png"
+    "region": 3,
+    "direction": "성산읍",
+    "url": "../../../images/nav/east.png"
   },
   {
     "id": 2,
-    "region": 2,
-    "direction": "서부",
-    "url": "../../../images/nav/kakao.png"
+    "region": 1,
+    "direction": "한림읍",
+    "url": "../../../images/nav/west.png"
   },
   {
     "id": 3,
-    "region": 3,
-    "direction": "남부",
-    "url": "../../../images/nav/naver.png"
+    "region": 4,
+    "direction": "서귀포시",
+    "url": "../../../images/nav/south.png"
   },
   {
     "id": 4,
-    "region": 4,
-    "direction": "북부",
-    "url": "../../../images/nav/logo.png"
+    "region": 2,
+    "direction": "제주시",
+    "url": "../../../images/nav/north.png"
   }
 ]
