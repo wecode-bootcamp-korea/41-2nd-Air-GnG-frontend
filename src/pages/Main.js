@@ -77,7 +77,7 @@ const Subnav = styled.div`
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 60px;
+  top: 80px;
   width: 100%;
   padding-right: 100px;
   background-color: white;
