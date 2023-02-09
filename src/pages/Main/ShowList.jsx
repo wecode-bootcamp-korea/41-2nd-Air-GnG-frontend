@@ -57,7 +57,7 @@ const ProductList = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin-top: 170px;
   margin-left: 100px;
   margin-right: 100px;
 `;
