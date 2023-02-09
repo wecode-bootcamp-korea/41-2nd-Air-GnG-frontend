@@ -106,6 +106,7 @@ const ZWrapDiv = styled.ul`
   flex-direction: column;
 `;
 const ZDiv = styled.li`
+  font-weight: bold;
   position: absolute;
   top: 30px;
   left: -200px;
