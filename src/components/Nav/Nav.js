@@ -7,6 +7,7 @@ import LoginModal from './components/LoginModal';
 import SelectPeople from './components/NavGuest';
 import NavDatePicker from './components/NavDatePicker';
 import dayjs from 'dayjs';
+import { RxMagnifyingGlass } from 'react-icons/rx';
 
 export default function Nav() {
   const navigate = useNavigate();
@@ -104,9 +105,9 @@ export default function Nav() {
               }}
             >
               <BoxWhere>
-                <p>여행지</p>
-                <p>{direction}</p>
-              </BoxWhere>
+                <p style={{ fontWeight: 'bold' }}>여행지</p>
+              </BoxWhere>{' '}
+              <Pstyle>{direction}</Pstyle>
               {searchWhereModal && (
                 <WhereModal>
                   {regionData.map(info => {
@@ -131,7 +132,7 @@ export default function Nav() {
                 setSearchWhenModal(prev => !prev);
               }}
             >
-              체크인 / 체크아웃
+              <p style={{ fontWeight: 'bold' }}>체크인 / 체크아웃</p>
             </SearchWhen>
             <SearchWho>
               <BoxGuest
@@ -142,8 +143,14 @@ export default function Nav() {
                 <SelectPeople handleCount={handleCount}></SelectPeople>
               </BoxGuest>
             </SearchWho>
-            <SearchIcon
-              src="../../../images/nav/search.png"
+
+            <RxMagnifyingGlass
+              style={{
+                'font-size': '30px',
+                backgroundColor: '#fea900',
+                'border-radius': '100%',
+                color: 'white',
+              }}
               onClick={e => {
                 fetch(`http://10.58.52.227:3000/?${query(queryString)}`, {
                   method: 'GET',
@@ -216,8 +223,9 @@ const Logo = styled.img`
 `;
 
 const NavSearchBox = styled.div`
-  width: 600px;
+  width: 700px;
   height: 60px;
+  margin-top: 8px;
   margin-left: 135px;
   border: 1px solid #ebebeb;
   box-shadow: 0px 1px 0px #fafafa;
@@ -234,7 +242,6 @@ const SearchWhere = styled.div`
   margin-top: -10px;
 `;
 const SearchWhen = styled.div`
-  border-right: 1px solid #cccccc;
   padding-right: 30px;
   z-index: 999;
   margin-top: -10px;
@@ -286,7 +293,7 @@ const Manicon = styled.img`
 const DateModal = styled.div`
   position: absolute;
   top: 19px;
-  left: 850px;
+  left: 840px;
   display: flex;
   justify-content: center;
   z-index: 99999;
@@ -312,20 +319,18 @@ const BoxWhere = styled.div`
   display: flex;
   flex-direction: column;
   line-height: 20px;
-  border-right: 1px solid #cccccc;
+
   cursor: pointer;
   padding-right: 40px;
   margin-left: 20px;
 
   p {
-    margin-top: 10px;
   }
 `;
 const InputWhere = styled.input`
   border: none;
 `;
 const BoxWhen = styled.div`
-  border-right: 1px solid #cccccc;
   line-height: 20px;
   padding-right: 40px;
   cursor: pointer;
@@ -368,4 +373,11 @@ const WhereImg = styled.img`
 `;
 const WhereTitle = styled.p`
   margin-top: 10px;
+`;
+const Pstyle = styled.p`
+  font-size: 12px;
+  margin-top: -3px;
+  position: absolute;
+  bottom: 25px;
+  left: 32.7%;
 `;
