@@ -19,7 +19,7 @@ export default function Booking() {
   const navigate = useNavigate();
   const location = useLocation();
   const { date, title, img, contents, guest, roomId } = location.state;
-  const dayperfee = 1000;
+  const dayperfee = 30000;
   const cleanpay = 30000;
   const [modal, setModal] = useState(false);
   const [modalDate, setModalDate] = useState(false);
@@ -115,7 +115,6 @@ export default function Booking() {
         Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        guestId: 1,
         roomId: location.state.roomId,
         checkIn: formatDate[0],
         checkOut: formatDate[1],
