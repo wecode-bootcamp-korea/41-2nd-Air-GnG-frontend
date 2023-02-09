@@ -27,16 +27,29 @@ const SelectPeople = ({
     handleCount(total);
     // setDropdownVisibility(prev => !prev);
   };
+  const el = useRef();
+  useEffect(() => {
+    const outClick = e => {
+      if (dropdownVisibility && el.current && !el.current.contains(e.target)) {
+        setDropdownVisibility(false);
+      }
+    };
+    document.addEventListener('mousedown', outClick);
+
+    return () => {
+      document.removeEventListener('mousedown', outClick);
+    };
+  }, [dropdownVisibility]);
   const addNum = (key, value) => {
     setCount({ ...count, [key]: value });
     handleCount(count.adult + 1);
     // countGuest(count.adult);
   };
   const { adult, kid, baby, pet } = count;
-  const total = adult;
+  const total = adult + kid + baby;
 
   return (
-    <div>
+    <div ref={el}>
       <BookingDiv onClick={onClick}>
         <input
           disabled
@@ -75,14 +88,15 @@ const BookingDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding-left: 20px;
-
+  padding-left: 5px;
   border-radius: 12px;
   font-weight: 100;
+  margin-top: -10px;
   input {
     border-style: none;
     background-color: white;
     text-align: center;
+    font-size: 16px;
   }
 `;
 
@@ -100,7 +114,7 @@ const ZDiv = styled.li`
   background-color: white;
   border-radius: 12px;
   border: 1px solid #dddd;
-  width: 600px;
+  width: 300px;
 `;
 const personSort = [
   { id: 1, num: '성인', name: 'adult', limit: '만 13세이상' },
