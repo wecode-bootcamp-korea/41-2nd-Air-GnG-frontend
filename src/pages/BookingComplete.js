@@ -6,7 +6,7 @@ export default function BookingComplete() {
   const navigate = useNavigate();
   const [dataList, setDataList] = useState([]);
   useEffect(() => {
-    fetch('data/bookingcomplete.json', {
+    fetch('http://10.58.52.225:3000/booking/check', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
